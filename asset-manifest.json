@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/mbta-departure-app/static/css/main.634816cd.css",
+    "main.js": "/mbta-departure-app/static/js/main.eba34cd8.js",
+    "static/js/787.45ba3111.chunk.js": "/mbta-departure-app/static/js/787.45ba3111.chunk.js",
+    "index.html": "/mbta-departure-app/index.html",
+    "main.634816cd.css.map": "/mbta-departure-app/static/css/main.634816cd.css.map",
+    "main.eba34cd8.js.map": "/mbta-departure-app/static/js/main.eba34cd8.js.map",
+    "787.45ba3111.chunk.js.map": "/mbta-departure-app/static/js/787.45ba3111.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.634816cd.css",
+    "static/js/main.eba34cd8.js"
+  ]
+}
