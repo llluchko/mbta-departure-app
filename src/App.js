@@ -15,6 +15,7 @@ class App extends Component {
     this.state = {
       trains: [],
       searhField: '',
+      date: new Date(),
     };
   }
 
@@ -23,7 +24,8 @@ class App extends Component {
       .then((response) => response.json())
       .then((json) => this.setState({ trains: json.data }))
       // preset url params - page 50 limit, sort=departure time, route_type = 2 (2 - Rail. Used for intercity or long-distance travel.), stop = North Station (BNT-0000);
-      // potential imrpovements -> set date from UI; create custom object only with needed data 
+      // get today as default
+      // potential imrpovements -> set stop station from UI; create custom object only with needed data 
    }
 
   handleChange = (e) => {
@@ -31,7 +33,7 @@ class App extends Component {
   };
 
   render() {
-    const { trains, searhField } = this.state;
+    const { trains, searhField, date } = this.state;
  
     const filteredTrains = trains.filter((train) =>
       train.relationships.trip.data.id.toLowerCase().includes(searhField.toLowerCase())
@@ -40,6 +42,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>North Station Departure Schedule</h1>
+        <h2> {date.toString()} </h2>
         <SearchBox
           placeholder="search destination"
           handleChange={this.handleChange}

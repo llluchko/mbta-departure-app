@@ -3,22 +3,19 @@ import "./list.styles.css";
 import "../list-item/list-item.styles.css"
 import { ListItem } from "../list-item/list-item.component";
 
-export const List = (props) => (
+export const List = ({trains}) => (
   <div className="list">
 
     <div className="list-title">
-        <span> Departure Time </span>
-        <span> Destination </span>
-        <span> Route </span>
-        <span> Train </span>
+        <span className="list-title-item"> Departure Time </span>
+        <span className="list-title-item"> Destination </span>
+        <span className="list-title-item"> Route </span>
+        <span className="list-title-item"> Train </span>
     </div>
 
-    {props.trains.map((train) => (
+    {trains.map((train) => (
         <ListItem key={train.id} train={train}></ListItem>
     ))}
     
   </div>
 );
-
-// trip.data.id -> destination -> CR-503364-140-MRRockport
-// route.data.id -> route -> CR-Newburyport
