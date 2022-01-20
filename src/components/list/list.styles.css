@@ -1,0 +1,16 @@
+.list {
+  display: grid;
+  width: 85vw;
+  margin: 0 auto;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.list-title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.list-title-item {
+  margin: 5px 25px;
+}

@@ -1,0 +1,22 @@
+.list-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #d5e2e2;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 5px 25px;
+  padding: 15px;
+  cursor: pointer;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+
+.list-item {
+  margin: 1rem 1rem;
+}
+
+.list-container:hover {
+  transform: scale(1.05);
+}
