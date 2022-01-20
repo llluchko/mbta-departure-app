@@ -25,7 +25,7 @@ class App extends Component {
       .then((json) => this.setState({ trains: json.data }))
       // preset url params - page 50 limit, sort=departure time, route_type = 2 (2 - Rail. Used for intercity or long-distance travel.), stop = North Station (BNT-0000);
       // get today as default
-      // potential imrpovements -> set stop station from UI; create custom object only with needed data 
+      // potential imrpovements -> set stop station from UI; create custom object only with needed data; save to redux store
    }
 
   handleChange = (e) => {
