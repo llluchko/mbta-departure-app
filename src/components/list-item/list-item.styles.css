@@ -1,11 +1,12 @@
 .list-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
   background-color: #d5e2e2;
   border: 1px solid grey;
   border-radius: 5px;
   margin: 5px 25px;
-  padding: 15px;
+  padding: 15px 15px;
   cursor: pointer;
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
@@ -13,10 +14,12 @@
   transition: transform 0.25s ease-out;
 }
 
-.list-item {
-  margin: 1rem 1rem;
-}
-
 .list-container:hover {
   transform: scale(1.05);
+}
+
+.list-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

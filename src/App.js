@@ -1,43 +1,42 @@
 import './App.css';
+
 import { Component } from 'react';
 import { List } from './components/list/list.component';
 import { SearchBox } from './components/search-box/search-box.component';
+
+const config = {
+  apiKey: 'c13c4600c22a4786a7f7c57956252b9d',
+};
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      departures: [],
+      trains: [],
       searhField: '',
     };
-
-    // this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    fetch('https://api-v3.mbta.com/schedules?filter%5Bdate%5D=2022-01-22&filter%5Broute_type%5D=2&filter%5Bstop%5D=BNT-0000')
+    fetch(`https://api-v3.mbta.com/schedules?page%5Blimit%5D=50&sort=departure_time&filter%5Broute_type%5D=2&filter%5Bstop%5D=BNT-0000&api_key=${config.apiKey}`)
       .then((response) => response.json())
-      .then((response) => console.log(response))
-      // .then((users) => this.setState({ departures: users }));
-  }
-
-  // e is a function parameter
-  // javasctipt by default doesn't set the context
-  // arrow function automaticly define this (the context) -> we don't need to bind the function
+      .then((json) => this.setState({ trains: json.data }))
+      // preset url params - page 50 limit, sort=departure time, route_type = 2 (2 - Rail. Used for intercity or long-distance travel.), stop = North Station (BNT-0000);
+      // potential imrpovements -> set date from UI; create custom object only with needed data 
+   }
 
   handleChange = (e) => {
     this.setState({ searhField: e.target.value });
   };
 
   render() {
-    const { departures, searhField } = this.state;
-    // const departures = this.state.departures;
-    // const searchField = this.state.searchField;
-    // setState is async - undefined amount of time - javascript doesn't know about it
-    const filteredDepartures = departures.filter((departure) =>
-      departure.name.toLowerCase().includes(searhField.toLowerCase())
+    const { trains, searhField } = this.state;
+ 
+    const filteredTrains = trains.filter((train) =>
+      train.relationships.trip.data.id.toLowerCase().includes(searhField.toLowerCase())
     );
+
     return (
       <div className="App">
         <h1>North Station Departure Schedule</h1>
@@ -45,7 +44,7 @@ class App extends Component {
           placeholder="search destination"
           handleChange={this.handleChange}
         />
-        <List departures={filteredDepartures} />
+        <List trains={filteredTrains} />
       </div>
     );
   }
